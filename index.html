@@ -52,12 +52,12 @@
           <form class="sub_category">
             <div class="form-group1 Head1">
               <select class="Head_drp form-control " id="drp">
-                <option value="hector" selected disabled>-Heading-</option>
+                <option value="xyz" selected disabled>-Heading-</option>
               </select>
             </div><br>
             <div id="drag2">
               <label for="message-text" class="col-form-label"></label>
-              <input type="text" class="form-control text-1" placeholder="Enter Sub-Heading" id="message-text">
+              <input type="text" class="form-control sub_text" placeholder="Enter Sub-Heading" id="message-text">
             </div>
             <hr>
             <button type="submit" class="btn btn-warning" id="sub_heading_add">Submit</button>
@@ -82,12 +82,12 @@
           <form class="form-3">
             <div class="form-group my-2 head_2">
               <select class="form_Head form-control ">
-                <option value="hector" selected disabled>Heading</option>
+                <option value="xyz" selected disabled>Heading</option>
               </select>
             </div>
-            <div class="form-group head_3">
+            <div class="form-group sub_head_1">
               <select class="form_Sub form-control ">
-                <option value="hector" selected disabled>Sub Heading</option>
+                <option value="xyz" selected disabled>Sub Heading</option>
               </select>
             </div>
             <div class="form-group my-2" id="drag3">
@@ -149,6 +149,18 @@
               <input type="text" class="form-control f_option " placeholder="option" class="message-text">
             </div><br>
             <button type="submit" class="btn btn-warning">Submit</button>
+            <div class="disabled">
+              <input class="form-check-input f_disabled" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1"> Disabled</label>
+            </div>
+            <div class="read_only">
+              <input class="form-check-input f_readonly" type="checkbox" name="flexRadioDefault" id="flexRadioDefault2">
+              <label class="form-check-label read123" for="flexRadioDefault2"> Read-Only </label>
+            </div>
+            <div class="required">
+              <input class="form-check-input f_required" type="radio" name="flexRadioDefault" id="flexRadioDefault3">
+              <label class="form-check-label" for="flexRadioDefault3"> Required </label>
+            </div>
           </form>
         </div>
         <div class="modal-footer">

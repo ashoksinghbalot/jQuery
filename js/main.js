@@ -4,9 +4,9 @@ $(document).ready(function () {
                 var out = JSON.parse(localStorage.getItem('dataInput'));
                 $(out).each(function (index, value) {
                         index = index + 1
-                        // console.log(value) 
+                        console.log(value) 
                         var subheading_heading = $(this).text()
-                        // console.log(subheading_heading)
+                        console.log(subheading_heading)
                         $('main').append('<section><h1>' + value.title + '</h1><button class="btn-cross" id="second" onclick="removeItem(this)">X</button></section>')
                         $('.Head1 select').append("<option value=" + index + ">" + value.title + "</option>")
                         $('.head_2 select').append("<option value=" + index + ">" + value.title + "</option>")
@@ -46,11 +46,11 @@ $(document).ready(function () {
         $(".sub_category").submit(function (event) {
                 event.preventDefault();
                 var heading = $('.Head_drp').val();
-                var textinput = $(".text-1").val();
+                var textinput = $(".sub_text").val();
                 console.log(textinput, heading)
                 $("main section:nth-child(" + heading + ")").append("<div class='container'><h5>" + textinput + "</h5><button class='btn-cross' id='second' onclick='removeItem(this)'>X</button></div>");
-                $('.head_3 select option').remove()
-                $('.head_3 select ').append("<option value='' selected disabled>--Select Heading--</option>")
+                $('.sub_head_1 select option').remove()
+                $('.sub_head_1 select ').append("<option value='' selected disabled>--Select Heading--</option>")
                 Dataitem();
                 $('.sub_category')[0].reset();
                 $('main .container h5').each(function (key) {
@@ -58,7 +58,7 @@ $(document).ready(function () {
                         console.log(this)
                         var sub_in_form = $(this).text()
                         console.log(sub_in_form)
-                        $('.head_3 select').append("<option value=" + key + ">" + sub_in_form + "</option>")
+                        $('.sub_head_1 select').append("<option value=" + key + ">" + sub_in_form + "</option>")
                 })
         });
 
@@ -66,8 +66,6 @@ $(document).ready(function () {
                 $('.form_Head').on('change', function (event) {
                         var h = $(this).val()
                         console.log(h)
-                        // $('.form_Head option').remove()
-                        // $(".form_Head").append("<option value='' selected disabled>--Select Heading--</option>")
                         $('.form_Sub option').remove()
                         $(".form_Sub").append("<option value='' selected disabled>--Select Sub-Heading--</option>")
                         $("main section:nth-child(" + h + ") div h5 ").each(function (key) {
@@ -93,8 +91,12 @@ $(document).ready(function () {
                         var nam = $(".f_name").val();
                         var act = $(".f_action").val();
                         var opt = $(".f_option").val();
+                        var dis = $(".f_disabled").val();
+                        var redo = $(".f_readonly").val();
+                        var req = $(".f_required").val();
                         console.log(cls, textinput3, id, lbl, ph, val, nam, act, opt)
-                        var data = '<lable> ' + lbl + '</lable><br><input type="' + textinput3 + '" class="' + cls + '" id="' + id + '" label="' + lbl + '" placeholder="' + ph + '" value="' + val + '" name="' + nam + '" action="' + act + '" option="' + opt + '" />'
+                        console.log($(".f_readonly").is(":checked")); 
+                        var data = '<lable> ' + lbl + '</lable><br><input type="' + textinput3 + '" class="' + cls + '" id="' + id + '" label="' + lbl + '" placeholder="' + ph + '" value="' + val + '" name="' + nam + '" action="' + act + '" option="' + opt + '" disabled="' + dis + '" readonly="' + redo + '" required="' + req + '"/>'
                         $("main section:nth-child(" + heading + ") div:nth-child(" + sub_heading + ")").append("<p class='input'>" + data + " <br><button class='btn-cross' onclick='removeItem(this)'>X</button></p>");
                         $('.form-3')[0].reset();
                         Dataitem();
@@ -116,7 +118,7 @@ function Dataitem() {
                         var Sub_H = $(this).children('h5').text()
                         var shmd = []
                         n = n + 3
-                        $("main section:nth-child(" + key + ") div:nth-child(" + n + ") p").each(function (r) {
+                        $("main section:nth-child(" + key + ") div:nth-child(" + n + ") p").each(function () {
                                 shmd.push(([$(this).html()]))
                         })
                         hmd.push({ subtitle: Sub_H, form: shmd })
@@ -140,7 +142,7 @@ $(function (event) {
                 update: function (event, ui) {
                         Dataitem();
                 }
-        });
+         });
         $(".container").sortable({
                 connectWith: "div",
                 cancel: "h5 , #second  ",
@@ -151,7 +153,6 @@ $(function (event) {
         $("main section").disableSelection();
         Dataitem();
 });
-
 function removeItem(Dlt) {
         $(Dlt).parent().remove();
         Dataitem();
